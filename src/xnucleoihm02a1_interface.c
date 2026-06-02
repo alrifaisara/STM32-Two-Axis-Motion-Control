@@ -151,6 +151,25 @@ void MX_GPIO_Init(void)
   /* Configures LED GPIO */
   BSP_LED_Init(LED2);
 #endif
+// Sends the configuration to specified Port and Pin settings
+/* Configuring PAX pin to drive an externally connected LED
+(you still need a current limiting resistor on the breadboard)*/
+/* Enable clock for GPIO Port A */
+__HAL_RCC_GPIOA_CLK_ENABLE();
+GPIO_InitTypeDef GPIO_InitStruct_1 = {0};
+GPIO_InitStruct_1.Pin = GPIO_PIN_9; //Change X to your pin
+GPIO_InitStruct_1.Mode = GPIO_MODE_INPUT; //Push-Pull output, meaning the pin supplies 3.3V and 0V
+GPIO_InitStruct_1.Pull = GPIO_PULLUP; //No internal pullup/down for output
+GPIO_InitStruct_1.Speed = GPIO_SPEED_FREQ_LOW;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct_1);
+
+/*for LED*/
+
+GPIO_InitStruct_1.Pin = GPIO_PIN_10; //Change X to your pin
+GPIO_InitStruct_1.Mode = GPIO_MODE_OUTPUT_PP; //Push-Pull output, meaning the pin supplies 3.3V and 0V
+GPIO_InitStruct_1.Pull = GPIO_NOPULL; //No internal pullup/down for output
+GPIO_InitStruct_1.Speed = GPIO_SPEED_FREQ_LOW;
+HAL_GPIO_Init(GPIOA, &GPIO_InitStruct_1);
 }
 
 /**

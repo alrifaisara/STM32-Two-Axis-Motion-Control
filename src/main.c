@@ -84,6 +84,7 @@ int main(void)
 {
   /* NUCLEO board initialization */
   NUCLEO_Board_Init();
+
   
   /* X-NUCLEO-IHM02A1 initialization */
   BSP_Init();
@@ -112,6 +113,15 @@ int main(void)
   {
     /* Check if any Application Command for L6470 has been entered by USART */
     USART_CheckAppCmd();
+    while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_SET)
+    {
+      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_SET); /*make sure pin is matches*/
+    }
+   
+    while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_RESET)
+    {
+      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_RESET); /*make sure pin matches*/
+    }
   }
 #endif
 }
