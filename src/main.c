@@ -115,13 +115,16 @@ int main(void)
     USART_CheckAppCmd();
     while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_SET)
     {
-      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_SET); /*make sure pin is matches*/
+      
     }
    
     while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_9)==GPIO_PIN_RESET)
     {
-      HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_RESET); /*make sure pin matches*/
     }
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_SET); /*make sure pin is matches*/
+    HAL_Delay(5);
+    HAL_GPIO_WritePin(GPIOA,GPIO_PIN_10,GPIO_PIN_RESET); /*make sure pin matches*/
+    // HAL_Delay(2000); 
   }
 #endif
 }
