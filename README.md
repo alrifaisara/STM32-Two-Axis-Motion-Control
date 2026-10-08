@@ -1,4 +1,6 @@
 # STM32 2-Axis Motion Control System
+<img width="1540" height="1170" alt="image" src="https://github.com/user-attachments/assets/63204b3f-d9f1-4338-b631-e06e835b6cc9" />
+
 
 A two-axis embedded motion-control system developed using an **STM32F401 microcontroller** and stepper motors. The system combines motor-driver communication, analog input control, external interrupts, and limit-switch protection to provide controlled and safe bidirectional motion.
 
